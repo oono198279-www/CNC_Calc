@@ -121,7 +121,7 @@
     <div id="milling" class="panel">
       <div class="card">
         <details open>
-          <summary>図解（PNG優先／無い場合は簡易図）</summary>
+          <summary>図解</summary>
           <div class="imgbox">
             <img id="milling_img" src="Image/milling_illustration.png" alt="フライス長さの計算式（ブック図）"
                  onerror="this.style.display='none'; document.getElementById('milling_svg_wrap').style.display=''">
@@ -164,7 +164,7 @@
     <div id="cornerR" class="panel">
       <div class="card">
         <details open>
-          <summary>図解（PNG優先／無い場合は簡易図）</summary>
+          <summary>図解</summary>
           <div class="imgbox">
             <img id="corner_img" src="Image/corner_r_calc.png" alt="角部Rのプログラム計算式（外径部R）"
                  onerror="this.style.display='none'; document.getElementById('corner_svg_wrap').style.display=''">
@@ -285,7 +285,7 @@
     function calcMill(){
       const D=parseFloat($("ml_d").value), phi=parseFloat($("ml_phi").value), d=parseFloat($("ml_dlen").value), air=parseFloat($("ml_air").value);
       const h=Math.sqrt((phi/2)*(phi/2)-d*d), start=h+D/2+air, end=-(h+air);
-      $("ml_out").textContent=`h: ${fmt(h)} mm\n始点: ${fmt(start)}\n終点: ${fmt(end)}`;
+      $("ml_out").textContent=`h  : ${fmt(h)} mm\n始点: ${fmt(start)}\n終点: ${fmt(end)}`;
     }
 
     function calcCornerR(){
@@ -301,7 +301,7 @@
       const I7=(R1cmd*sin(90-theta))*2 + I8;
       const K7=R1cmd - R1cmd*cos(90-theta) + Zval;
       $("cr_out").textContent = [
-      `補正量: ${f4(corr)} mm`,
+      `補正量　: ${f4(corr)} mm`,
       `指令面長: ${f4(cmdLen)} mm`,
       "",
       coordRow("D", I5, K5),
