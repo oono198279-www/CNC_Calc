@@ -228,6 +228,14 @@
     const $ = (id)=>document.getElementById(id);
     const rad = (deg)=>deg*Math.PI/180;
     const fmt = (x)=>isFinite(x)?(Math.round(x*10000)/10000).toString():"—";
+    // --- 4桁固定表示＆列揃え ---
+    const f4 = (x)=> isFinite(x) ? Number(x).toFixed(4) : "—";  // 5 -> 5.0000
+    const pad = (s, n)=> s.toString().padStart(n, ' ');         // 左側スペース埋め
+    const coordRow = (label, x, z)=>{
+      const xs = pad(f4(x), 8);  // 8桁ぶん確保（必要なら調整）
+      const zs = pad(f4(z), 8);
+      return `${label}点: X=${xs} , Z=${zs}`;
+    };
 
     document.querySelectorAll(".tab-btn").forEach(btn=>{
       btn.addEventListener("click",()=>{
@@ -292,15 +300,15 @@
       const I8=(OD - ((cmdLen*tan(theta))*2)) - (R1cmd*tan((90-theta)/2)*2);
       const I7=(R1cmd*sin(90-theta))*2 + I8;
       const K7=R1cmd - R1cmd*cos(90-theta) + Zval;
-      $("cr_out").textContent=[
-        `補正量: ${fmt(corr)} mm`,
-        `指令面長: ${fmt(cmdLen)} mm`,
-        ``,
-        `D点: X=${fmt(I5)},  Z=${fmt(K5)}`,
-        `C点: X=${fmt(I6)},  Z=${fmt(K6)}`,
-        `B点: X=${fmt(I7)},  Z=${fmt(K7)}`,
-        `A点: X=${fmt(I8)},  Z=${fmt(K8)}`
-      ].join("\n");
+      $("cr_out").textContent = [
+      `補正量: ${f4(corr)} mm`,
+      `指令面長: ${f4(cmdLen)} mm`,
+      "",
+      coordRow("D", I5, K5),
+      coordRow("C", I6, K6),
+      coordRow("B", I7, K7),
+      coordRow("A", I8, K8)
+    ].join("\n");
     }
 
     toggleRMode();
