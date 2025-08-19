@@ -252,7 +252,7 @@
       const D  = parseFloat($("rpm_d").value);
       const n  = 1000.0*Vc/(Math.PI*D);
       const rps = n/60.0;
-      $("rpm_out").textContent = `主軸回転数: ${Math.trunc(n)} rpm\n１秒間の回転数: ${Math.trunc(rps)} rps`;
+      $("rpm_out").textContent = `主軸回転数　　: ${Math.trunc(n)} rpm\n１秒間の回転数: ${Math.trunc(rps)} rps`;
     }
 
     function toggleRMode(){
@@ -279,7 +279,7 @@
       }
       const f_rev = Math.sqrt((Ra_um * R * coeff) / 1000.0);
       const f_min = f_rev * rpm;
-      $("rf_out").textContent = `毎回転切削送り: ${Math.trunc(f_rev*10000)/10000} mm/rev\n毎分切削送り:  ${Math.trunc(f_min*10000)/10000} mm/min\n${note}`;
+      $("rf_out").textContent = `毎回転切削送り: ${Math.trunc(f_rev*10000)/10000} mm/rev\n毎分切削送り　:  ${Math.trunc(f_min*10000)/10000} mm/min\n${note}`;
     }
 
     function calcMill(){
