@@ -17,8 +17,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 
   <style>
+    :root {
+      --safe-top: env(safe-area-inset-top, 0px);
+      --safe-bottom: env(safe-area-inset-bottom, 0px);
+    }
+
     html, body { margin:0; padding:0; font-family:-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Arial; background:#fff; color:#111827; }
-    header { position:sticky; top:0; background:#fff; border-bottom:1px solid #e5e7eb; padding:12px 16px; z-index:10; }
+    header { position:sticky; top:0; background:#fff; border-bottom:1px solid #e5e7eb; padding: calc(12px + var(--safe-top)) 16px 12px; z-index:10; }
     h1 { font-size:18px; margin:0; }
     .wrap { padding:12px 12px 90px; max-width:900px; margin:0 auto; }
     .tabs { display:flex; gap:6px; overflow-x:auto; padding-bottom:8px; border-bottom:1px solid #e5e7eb; }
@@ -36,7 +41,7 @@
     .hint { font-size:12px; color:#6b7280; }
     .imgbox, .svgbox { width:100%; overflow:auto; border:1px solid #e5e7eb; border-radius:8px; padding:6px; background:#f9fafb; }
     .imgbox img { max-width:100%; height:auto; display:block; margin:auto; }
-    footer { position:fixed; left:0; right:0; bottom:0; padding:8px 12px; border-top:1px solid #e5e7eb; background:#fff; text-align:center; font-size:12px; color:#6b7280; }
+    footer { position:fixed; left:0; right:0; bottom:0; padding:8px 12px calc(8px + var(--safe-bottom)); border-top:1px solid #e5e7eb; background:#fff; text-align:center; font-size:12px; color:#6b7280; }
     #mode { position:fixed; right:8px; bottom:6px; font:12px/1.2 ui-monospace; opacity:.5; }
   </style>
 </head>
