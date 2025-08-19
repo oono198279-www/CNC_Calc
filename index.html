@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
   <meta charset="utf-8">
-  <title>CNC 計算ツール｜GitHub Pages 最小版 v2</title>
+  <title>CNC 計算ツール</title>
 
   <!-- PWA / iOS -->
   <link rel="manifest" href="manifest.webmanifest">
@@ -46,7 +46,7 @@
   </style>
 </head>
 <body>
-  <header><h1>CNC 計算ツール（GitHub Pages 最小版 v2）</h1></header>
+  <header><h1>CNC 計算ツール</h1></header>
 
   <div class="wrap">
     <div class="tabs">
@@ -222,12 +222,12 @@
     </div>
   </div>
 
-  <footer>© CNC quick calc（GitHub Pages / 最小版 v2）</footer>
+  <footer>© CNC quick calc（GitHub Pages）</footer>
 
   <script>
     const $ = (id)=>document.getElementById(id);
     const rad = (deg)=>deg*Math.PI/180;
-    const fmt = (x)=>isFinite(x)?(Math.round(x*1000)/1000).toString():"—";
+    const fmt = (x)=>isFinite(x)?(Math.round(x*10000)/10000).toString():"—";
 
     document.querySelectorAll(".tab-btn").forEach(btn=>{
       btn.addEventListener("click",()=>{
@@ -267,11 +267,11 @@
         const Ra_from_Rz = rz / k;
         Ra_um = rz;
         coeff = 8;
-        note = "（Rz×8則 / 参考Ra≈Rz/k=" + (Math.round(Ra_from_Rz*1000)/1000) + "μm）";
+        note = "（Rz×8則 / 参考Ra≈Rz/k=" + (Math.round(Ra_from_Rz*10000)/10000) + "μm）";
       }
       const f_rev = Math.sqrt((Ra_um * R * coeff) / 1000.0);
       const f_min = f_rev * rpm;
-      $("rf_out").textContent = `毎回転切削送り: ${Math.trunc(f_rev*1000)/1000} mm/rev\n毎分切削送り:  ${Math.trunc(f_min*1000)/1000} mm/min\n${note}`;
+      $("rf_out").textContent = `毎回転切削送り: ${Math.trunc(f_rev*10000)/10000} mm/rev\n毎分切削送り:  ${Math.trunc(f_min*10000)/10000} mm/min\n${note}`;
     }
 
     function calcMill(){
